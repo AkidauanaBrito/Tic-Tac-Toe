@@ -19,18 +19,11 @@ h1, h2 {
     font-weight: bold;
 }
 
-.inputJogador1, .inputJogador2 {
-    
-}
-
-
-
 button {
     font-weight: bold;
     color:#03023d;
     
 }
-
 
 #gameBoard {
     background-color: #09468d;
@@ -55,5 +48,5 @@ button {
 }
 
 #gameBoard span.win {
-    background-color: #0deb32;
+    background-color: #eff315;
 }
