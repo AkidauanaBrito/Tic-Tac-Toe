@@ -19,6 +19,12 @@ function initializeGame() { //função para inicializar o jogo e preparar o tabu
     })
 }
 
+function disabledRegion(element) {//função que permite apenas um click por região
+    element.style.cursor = 'default'
+    element.removeEventListener('click', handleBoardClick)
+
+}
+
 function handleBoardClick(ev) { //Função direcionada para quando o jogador clicar na região do tabuleiro
     const span = ev.currentTarget
     const region = span.dataset.region // N.N
@@ -36,6 +42,7 @@ function handleBoardClick(ev) { //Função direcionada para quando o jogador cli
     // Limpa o console e exibe nosso tabuleiro virtual
     console.clear()
     console.table(vBoard)
+    disabledRegion(span)
 }
 
 document.getElementById('start').addEventListener('click', initializeGame)
