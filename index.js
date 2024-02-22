@@ -19,7 +19,7 @@ function initializeGame() { //função para inicializar o jogo e preparar o tabu
     })
 }
 
-function getWinRegions() { //verificar as regioes onde o jogador venceu
+function getWinRegions() { //Função que verifica se existem três regiões iguais em sequência e devolve as regiões
     const winRegions = []
     if (vBoard[0][0] && vBoard[0][0] === vBoard[0][1] && vBoard[0][0] === vBoard[0][2])
     winRegions.push("0.0", "0.1", "0.2")
@@ -66,6 +66,16 @@ function handleBoardClick(ev) { //Função direcionada para quando o jogador cli
     console.table(vBoard)
     disabledRegion(span)
     const winRegions = getWinRegions()
+    if (winRegions.length > 0) { //houve um vencedor
+        console.log("Venceu")
+    } else if (vBoard.flat().includes('')){
+        turnPlayer = turnPlayer === 'player1' ? 'player2' : 'player1'
+        upDateTitle()
+    } else {
+        document.querySelector('h2').innerHTML = 'Empate!'
+    }
+
 }
+
 
 document.getElementById('start').addEventListener('click', initializeGame)
