@@ -15,6 +15,7 @@ function initializeGame() { //função para inicializar o jogo e preparar o tabu
     boardRegions.forEach(function (element){
         element.classList.remove('win')
         element.innerText = ''
+        element.classList.add('cursor-pointer')
         element.addEventListener('click', handleBoardClick)
     })
 }
@@ -42,7 +43,7 @@ function getWinRegions() { //Função que verifica se existem três regiões igu
 
 
 function disabledRegion(element) {//função que permite apenas um click por região
-    element.style.cursor = 'default'
+    element.classList.remove('cursor-pointer')
     element.removeEventListener('click', handleBoardClick)
 
 }
