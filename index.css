@@ -45,7 +45,6 @@ button {
 
 #gameBoard span {
     background-color: #03023d;
-    cursor: pointer;
     display: grid;
     place-content: center;
     font-size: 5rem;
@@ -54,3 +53,7 @@ button {
 #gameBoard span.win {
     background-color: #eff315;
 }
+
+.cursor-pointer (
+    cursor: pointer;
+)
