@@ -47,6 +47,14 @@ function disabledRegion(element) {//função que permite apenas um click por reg
 
 }
 
+function handleWin(regions) {
+    regions.forEach(function (region) {
+        document.querySelector('[data-region="' + region + '"]').classList.add('win')
+    })
+    const playerName = document.getElementById(turnPlayer).value
+    document.querySelector('h2').innerHTML = playerName + 'Venceu!'
+}
+
 function handleBoardClick(ev) { //Função direcionada para quando o jogador clicar na região do tabuleiro
     const span = ev.currentTarget
     const region = span.dataset.region // N.N
@@ -67,7 +75,7 @@ function handleBoardClick(ev) { //Função direcionada para quando o jogador cli
     disabledRegion(span)
     const winRegions = getWinRegions()
     if (winRegions.length > 0) { //houve um vencedor
-        console.log("Venceu")
+        handleWin(winRegions)
     } else if (vBoard.flat().includes('')){
         turnPlayer = turnPlayer === 'player1' ? 'player2' : 'player1'
         upDateTitle()
