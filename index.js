@@ -47,12 +47,12 @@ function disabledRegion(element) {//função que permite apenas um click por reg
 
 }
 
-function handleWin(regions) {
+function handleWin(regions) { //Função que especifica a vitória do jogador
     regions.forEach(function (region) {
         document.querySelector('[data-region="' + region + '"]').classList.add('win')
     })
     const playerName = document.getElementById(turnPlayer).value
-    document.querySelector('h2').innerHTML = playerName + 'Venceu!'
+    document.querySelector('h2').innerHTML = playerName + ' Venceu!'
 }
 
 function handleBoardClick(ev) { //Função direcionada para quando o jogador clicar na região do tabuleiro
