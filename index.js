@@ -1,5 +1,5 @@
 const boardRegions = document.querySelectorAll('#gameBoard span') //criando as regiões do tabuleiro
-const vBoard = [] //tabuleiro virtual
+let vBoard = [] //tabuleiro virtual
 let turnPlayer = '' //jogador da vez
 
 function upDateTitle() { //função p exibir o nome do jogador da vez
@@ -18,3 +18,24 @@ function initializeGame() { //função para inicializar o jogo e preparar o tabu
         element.addEventListener('click', handleBoardClick)
     })
 }
+
+function handleBoardClick(ev) { //Função direcionada para quando o jogador clicar na região do tabuleiro
+    const span = ev.currentTarget
+    const region = span.dataset.region // N.N
+    const rowColumnPair = region.split('.') // ["N", "N"]
+    const row = rowColumnPair[0]
+    const column = rowColumnPair[1]
+    // Marca a região clicada com o símbolo do jogador
+    if (turnPlayer === 'player1') {
+      span.innerText = 'X'
+      vBoard[row][column] = 'X'
+    } else {
+      span.innerText = 'O'
+      vBoard[row][column] = 'O'
+    }
+    // Limpa o console e exibe nosso tabuleiro virtual
+    console.clear()
+    console.table(vBoard)
+}
+
+document.getElementById('start').addEventListener('click', initializeGame)
